@@ -1,12 +1,30 @@
-# React + Vite
+# 🎓 Byway Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Byway** is a modern, fullstack frontend web application developed using **React (Vite)** as part of the **Algoriza Internship Program 2025**.  
+It connects with a backend ASP.NET Core Web API to provide a complete e-learning platform experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
+🔗 [Byway Frontend on Netlify](https://byway-project.netlify.app/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧠 About the Project
+This frontend provides users with an intuitive interface to:
+- Browse available courses  
+- View instructor information  
+- Explore categories dynamically from the API  
+- Manage their learning experience through a clean and simple UI  
+
+---
+
+## ⚙️ Technologies Used
+- **React (Vite)**
+- **Tailwind CSS**
+- **Axios** for API communication
+- **React Router**
+- **Jotai** for state management
+- **Lucide-react** for icons
+
+---
