@@ -18,13 +18,6 @@ The system connects to a Backend (ASP.NET Core Web API) that handles all data ma
 
 ---
 
-🧪 Admin Demo Account
-
-For testing or reviewing:
-
-Email: admin@gmail.com  
-Password: Admin123
-
 
 ## 🧠 About the Project
 This frontend provides users with an intuitive interface to:
