@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+
+@theme {
+  --font-display: "Inter", sans-serif;
+
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-violet-normal: #5879dc;
+  --color-violet-light: #eef2ff;
+  --color-content-primary: #202637;
+  --color-content-secondery: #737f8e;
+  --color-content-tertiary: #96a0b6;
+  --color-warning-300: #fec84b;
+  --color-grayBackground: #f8fafc;
+  --color-graylight: #e2e8f0;
+  --color-greydark: #eef0f3;
+  --color-greyDarkText: #7e8ca0;
+  --color-gray-textdark: #020617;
+  --color-inputGray: #d9d9d9;
+  --color-major-shade: #b2b5c4;
+  --color-grayBorder: #e2e8f0;
+  --color-g-disabled: #94a3b8;
+  --color-g-textDark: #020617;
+  --color-g-100: #f1f5f9;
+  --color-g-200: #e2e8f0;
+  --color-g-300: #cbd5e1;
+  --color-g-700: #334155;
+  --color-g-800: #1e293b;
+  --color-g-900: #0f172a;
+  --color-base-line: #e6e7ec;
+  --color-error-600: #dc2626;
+  --color-facebook: #0866ff;
+  --color-google: #ea4335;
+  --color-icon-gray: #96a0b6;
+  --color-shadow: #3b82f61f;
+
+  --color-foundation-border: #f1f3f9;
+
+  --spacing-22: 22px;
+  --spacing-30: 30px;
+
+  --text-size-16: 16px;
+  --text-size-32: 32px;
+  --text-size-40: 40px;
+
+  --shadow-card: 0 0 8px #3b82f61f;
+  --shadow-dropmenu: 0 0 14px 0 #0000001f;
+  --shadow-notification: 0 4px 15px 0 #0000000d;
+  --shadow-instructor-table: 0 4px 15px 0 #00000014;
+  --shadow-stats-card: 0 4px 14px 0 #a7a7a71f;
+
+  --font-ibx: "IBM Plex Sans Arabic", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-display);
+}
+
+.active {
+  color: var(--color-violet-normal);
+  background-color: #eef2ff;
+  border-radius: 8px;
+}
+
+@utility flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@utility flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@utility container {
+  padding-inline: 5rem;
+  @media (width >= 640px) {
+    max-width: 640px;
+  }
+
+  @media (width >=768px) {
+    max-width: 768px;
+  }
+
+  @media (width >=1024px) {
+    max-width: 1024px;
+  }
+
+  @media (width >=1280px) {
+    max-width: 1280px;
+  }
+  @media (width >=1400px) {
+    max-width: 1400px;
+  }
+}
+
+/* #root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
