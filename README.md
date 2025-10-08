@@ -1,9 +1,17 @@
-# 🎓 Byway Frontend
+# 🎓 Byway — Frontend
 
-**Byway** is a modern, fullstack frontend web application developed using **React (Vite)** as part of the **Algoriza Internship Program 2025**.  
-It connects with a backend ASP.NET Core Web API to provide a complete e-learning platform experience.
+Byway is a full e-learning web platform developed as part of the Algoriza Internship 2025.
+It provides both User and Admin roles, offering a complete educational experience with modern design and seamless backend integration.
 
----
+## 🧾 Project Overview
+
+Byway is a course management website featuring two main roles:
+
+User: Can browse courses, view instructors, and explore categories.
+Admin: Has access to a dashboard to manage courses, instructors, and categories (add, edit, delete).
+
+The system connects to a Backend (ASP.NET Core Web API) that handles all data management and authentication.
+-
 
 ## 🚀 Live Demo
 🔗 [Byway Frontend on Netlify](https://byway-project.netlify.app/)
