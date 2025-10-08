@@ -1,12 +1,39 @@
-# React + Vite
+# 🎓 Byway — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Byway is a full e-learning web platform developed as part of the Algoriza Internship 2025.
+It provides both User and Admin roles, offering a complete educational experience with modern design and seamless backend integration.
 
-Currently, two official plugins are available:
+## 🧾 Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Byway is a course management website featuring two main roles:
 
-## Expanding the ESLint configuration
+User: Can browse courses, view instructors, and explore categories.
+Admin: Has access to a dashboard to manage courses, instructors, and categories (add, edit, delete).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The system connects to a Backend (ASP.NET Core Web API) that handles all data management and authentication.
+-
+
+## 🚀 Live Demo
+🔗 [Byway Frontend on Netlify](https://byway-project.netlify.app/)
+
+---
+
+
+## 🧠 About the Project
+This frontend provides users with an intuitive interface to:
+- Browse available courses  
+- View instructor information  
+- Explore categories dynamically from the API  
+- Manage their learning experience through a clean and simple UI  
+
+---
+
+## ⚙️ Technologies Used
+- **React (Vite)**
+- **Tailwind CSS**
+- **Axios** for API communication
+- **React Router**
+- **Jotai** for state management
+- **Lucide-react** for icons
+
+---
