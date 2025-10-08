@@ -8,12 +8,14 @@ import { useEffect, useState } from "react";
 import { useCart } from "../CustomHooks/useCart";
 import toast from "react-hot-toast";
 import { tokenAtom } from "../Store/authAtom";
+import { apiAtom } from "../Store/apiAtom";
 
 export default function CourseDetailCard() {
   const [course] = useAtom(currentCourseAtom);
   const { cart, loadCart, addCourseToCart } = useCart();
   const [isInCart, setIsInCart] = useState(false);
   const [token] = useAtom(tokenAtom);
+  const [Api] = useAtom(apiAtom);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,7 +51,7 @@ export default function CourseDetailCard() {
     <div className="bg-white border border-graylight rounded-2xl shadow-card py-6 px-5.5 absolute top-4">
       <div className="flex flex-col ">
         <img
-          src={`http://localhost:5046${course.imageUrl}`}
+          src={`${Api}${course.imageUrl}`}
           alt="course-img"
           className="w-full rounded-lg h-50 object-cover"
         />

@@ -15,6 +15,7 @@ import CourseModal from "../../Components/AdminComponents/CourseModal";
 import Pagination from "../../Components/Pagination";
 import { getCategories } from "../../api/categoryApi";
 import toast from "react-hot-toast";
+import AdminSearchBar from "../../Components/AdminComponents/AdminSearchBar";
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
@@ -26,7 +27,7 @@ export default function Courses() {
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  const [modalType, setModalType] = useState(null); // add | update | view
+  const [modalType, setModalType] = useState(null);
   const [selected, setSelected] = useState(null);
   const [deleteItem, setDeleteItem] = useState(null);
 
@@ -188,7 +189,7 @@ export default function Courses() {
 
               {/* SearchBar */}
               <div className="shadow-md rounded-lg">
-                <CustomSearchBar
+                <AdminSearchBar
                   onChange={(e) => {
                     setSearch(e.target.value);
                     setPage(1);
@@ -206,6 +207,13 @@ export default function Courses() {
               </div>
             </div>
           </div>
+
+          {/* Loader */}
+          {loading && (
+            <div className="flex justify-center my-20">
+              <p>Loading...</p>
+            </div>
+          )}
 
           {/* Courses Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

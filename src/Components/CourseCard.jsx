@@ -13,7 +13,7 @@ export default function CourseCard({ data }) {
           <img
             src={`${Api}${data.imageUrl}`}
             alt="course-image"
-            className="h-[140px] rounded-lg  object-cover"
+            className="h-[140px] w-full rounded-lg  object-cover"
           />
 
           {/* Course Tag */}

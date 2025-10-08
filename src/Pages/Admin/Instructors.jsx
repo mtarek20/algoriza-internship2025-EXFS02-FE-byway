@@ -13,6 +13,7 @@ import InstructorModal from "../../Components/AdminComponents/InstructorModal";
 import DeleteModal from "../../Components/AdminComponents/DeleteModal";
 import RatingStars from "../../Components/RatingStars";
 import toast from "react-hot-toast";
+import AdminSearchBar from "../../Components/AdminComponents/AdminSearchBar";
 
 export default function Instructors() {
   const [search, setSearch] = useState("");
@@ -97,7 +98,7 @@ export default function Instructors() {
 
             {/* SearchBar */}
             <div className="shadow-md rounded-lg">
-              <CustomSearchBar
+              <AdminSearchBar
                 onChange={(e) => setSearch(e.target.value)}
                 value={search}
                 placeholder="Search for Instructors"
