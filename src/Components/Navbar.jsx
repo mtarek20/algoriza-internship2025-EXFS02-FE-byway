@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/logo.png";
 import CustomSearchBar from "./CustomSearchBar";
 import { useAtom } from "jotai";
@@ -11,13 +11,14 @@ const Navbar = () => {
   const [user, setUser] = useAtom(userAtom);
   const [token, setToken] = useAtom(tokenAtom);
   const { cart, loadCart } = useCart();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     setUser(null);
     setToken(null);
-    window.location.reload();
+    navigate("/");
   };
 
   useEffect(() => {

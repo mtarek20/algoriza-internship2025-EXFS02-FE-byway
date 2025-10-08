@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 
 import { FolderInputIcon, HouseIcon, LogOutIcon, User } from "lucide-react";
@@ -7,7 +7,8 @@ import { useAtom } from "jotai";
 import { tokenAtom } from "../../Store/authAtom";
 
 export default function AdminSidebar() {
-  const [token, setToken] = useAtom(tokenAtom);
+  const [, setToken] = useAtom(tokenAtom);
+  const navigate = useNavigate();
   return (
     <div className="w-[20%] bg-white border-r border-base-line p-5">
       {/* Logo  */}
@@ -60,7 +61,7 @@ export default function AdminSidebar() {
               onClick={() => {
                 localStorage.removeItem("token");
                 setToken(null);
-                window.location.reload();
+                navigate("/");
               }}
               className="space-x-2.5 flex items-center py-3 px-4 mt-2 text-content-secondery cursor-pointer "
             >
