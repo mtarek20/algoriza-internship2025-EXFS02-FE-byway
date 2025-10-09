@@ -6,12 +6,12 @@ import { useAtom } from "jotai";
 import { currentCourseAtom } from "../../../Store/courseAtom";
 import { apiAtom } from "../../../Store/apiAtom";
 
-export default function CourseDetailsInstructorSection() {
+export default function CourseDetailsInstructorSection({ instructorRef }) {
   const [currentCourse] = useAtom(currentCourseAtom);
   const [Api] = useAtom(apiAtom);
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div ref={instructorRef} className="flex flex-col space-y-4">
       <h3 className="text-xl font-semibold text-g-900">Instructor</h3>
 
       <div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { X, Camera, ChevronDown } from "lucide-react";
+import { X, Camera, ChevronDown, Loader } from "lucide-react";
 import ImgIcon from "../../assets/icons/Image.svg";
 import { addInstructor, updateInstructor } from "../../api/instructorApi";
 import { StarIcon } from "@heroicons/react/20/solid";
@@ -7,10 +7,12 @@ import { instructorSchema } from "../../lib/validation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Input from "../Input";
+import toast from "react-hot-toast";
 
 export default function InstructorModal({ type, instructor, onClose }) {
   const [preview, setPreview] = useState(null);
   const [rate, setRate] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
 
   const {
@@ -71,10 +73,20 @@ export default function InstructorModal({ type, instructor, onClose }) {
         description: data.description,
         imageUrl: image,
       };
-      if (type === "add") await addInstructor(payload);
-      if (type === "update") await updateInstructor(instructor.id, payload);
+      setLoading(true);
+      if (type === "add") {
+        await addInstructor(payload);
+        toast.success("Instructor added successfully");
+      }
+      if (type === "update") {
+        await updateInstructor(instructor.id, payload);
+        toast.success("Instructor updated successfully");
+      }
     } catch (err) {
       console.log(err);
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
     onClose();
   };
@@ -247,6 +259,7 @@ export default function InstructorModal({ type, instructor, onClose }) {
                   </button>
                   <button
                     type="submit"
+                    disabled={loading}
                     className="flex-1 px-4 py-3 text-size-16 font-medium bg-[#020617] text-white rounded-lg hover:bg-gray-800 transition-colors"
                   >
                     {type === "add" ? "Add" : "Update"}
@@ -260,54 +273,3 @@ export default function InstructorModal({ type, instructor, onClose }) {
     </>
   );
 }
-
-{
-  /* <label className="block text-sm font-medium text-gray-900 mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                {...register("name")}
-                disabled={type === "view"}
-                placeholder="Write here"
-                className="w-full px-3 py-3.5 border border-[#DFE1E8] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <p className="text-red-500 text-sm">{errors.name?.message}</p> */
-}
-// const handleImagePreview = (e) => {
-//   const file = e.target.files[0];
-//   if (file) {
-//     setPreview(URL.createObjectURL(file));
-//   }
-// };
-// const handleRatingChange = (rating) => {
-//   setForm((prev) => ({
-//     ...prev,
-//     rate: rating,
-//   }));
-// };
-
-// const handleChange = (e) => {
-//   setForm({ ...form, [e.target.name]: e.target.value });
-// };
-
-// const handleImageUpload = (e) => {
-//   const file = e.target.files[0];
-//   if (file) {
-//     const reader = new FileReader();
-//     reader.onload = (e) => {
-//       setSelectedImage(e.target.result);
-//     };
-//     reader.readAsDataURL(file);
-
-//     handleImage(e);
-//   }
-// };
-
-// const handleImage = async (e) => {
-//   const file = e.target.files[0];
-//   if (file) {
-//     const url = await uploadImage(file);
-//     setForm({ ...form, imageUrl: url });
-//   }
-// };

@@ -25,7 +25,7 @@ const Navbar = () => {
     if (user && token) {
       loadCart();
     }
-  }, []);
+  }, [token, user]);
 
   return (
     <nav className=" py-5 px-15 border-b border-graylight bg-white ">

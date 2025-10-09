@@ -2,9 +2,9 @@ import CustomButton from "../../CustomButton";
 import RatingBreakdown from "../../RatingBreakPoint";
 import UserReviewCard from "../../UserReviewCard";
 
-export default function CourseDetailsReviewsSection() {
+export default function CourseDetailsReviewsSection({ reviewsRef }) {
   return (
-    <div className="px-15 py-6 space-y-6">
+    <div ref={reviewsRef} className="px-15 py-6 space-y-6">
       <h3 className="text-xl font-semibold text-g-900 ">Learner Reviews</h3>
       <div className="flex">
         <div className="w-1/4">

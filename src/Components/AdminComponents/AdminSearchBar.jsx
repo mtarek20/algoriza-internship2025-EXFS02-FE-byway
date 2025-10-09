@@ -3,19 +3,19 @@ import { useEffect } from "react";
 import { getSearchCourses } from "../../api/CourseApi";
 
 export default function AdminSearchBar({ value, placeholder, onChange }) {
-  const handleSearch = async () => {
-    try {
-      await getSearchCourses({
-        name: value,
-      });
-    } catch (error) {
-      console.error("Error fetching courses:", error);
-    }
-  };
+  // const handleSearch = async () => {
+  //   try {
+  //     await getSearchCourses({
+  //       name: value,
+  //     });
+  //   } catch (error) {
+  //     console.error("Error fetching courses:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    handleSearch();
-  }, [value]);
+  // useEffect(() => {
+  //   handleSearch();
+  // }, [value]);
   return (
     <div className="relative flex-1">
       <div className="relative">

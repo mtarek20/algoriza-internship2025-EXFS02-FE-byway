@@ -4,7 +4,7 @@ import CoursesSidebar from "../../Components/CoursesSidebar";
 import DropDownMenu from "../../Components/DropDownMenu";
 import Pagination from "../../Components/Pagination";
 import Filter from "../../assets/icons/filter.svg";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { getSearchCourses } from "../../api/CourseApi";
 
 export default function CoursesPage() {
@@ -17,8 +17,7 @@ export default function CoursesPage() {
   const [filters, setFilters] = useState({
     minPrice: 0,
     maxPrice: 1500,
-    minRating: 0,
-    maxRating: 5,
+    rating: null,
     minLectures: 0,
     maxLectures: 1000,
     categoryNames: [],
@@ -38,6 +37,12 @@ export default function CoursesPage() {
       })
       .catch((err) => console.error(err));
   }, [filters, page, sort]);
+
+  const role = localStorage.getItem("role");
+
+  if (role === "Admin") {
+    return <Navigate to="/admin/dashboard" replace />;
+  }
 
   return (
     <div className="px-15 pt-13">

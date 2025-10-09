@@ -9,6 +9,7 @@ import { login } from "../../api/authApi";
 import { useNavigate } from "react-router-dom";
 import { useSetAtom } from "jotai";
 import { tokenAtom, userAtom } from "../../Store/authAtom";
+import { useEffect } from "react";
 
 export default function LogIn() {
   const navigate = useNavigate();
@@ -21,12 +22,15 @@ export default function LogIn() {
   } = useForm({ resolver: yupResolver(loginSchema) });
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const res = await login(data);
       console.log(res);
       localStorage.setItem("token", res.token);
       localStorage.setItem("role", res.role);
+
+      if (res.user) {
+        localStorage.setItem("user", JSON.stringify(res.user));
+      }
 
       setUser(res.user);
       setToken(res.token);
@@ -35,9 +39,23 @@ export default function LogIn() {
         replace: true,
       });
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed ❌");
+      console.error(err);
+      alert(err.response?.data?.message || "Login failed");
     }
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+
+    if (token && role) {
+      if (role === "Admin") {
+        navigate("/admin/dashboard", { replace: true });
+      } else {
+        navigate("/", { replace: true });
+      }
+    }
+  }, [navigate]);
 
   return (
     <div className="min-h-screen flex justify-center items-center">

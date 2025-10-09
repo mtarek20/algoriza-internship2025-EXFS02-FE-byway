@@ -59,46 +59,6 @@ export default function CourseModal({
     },
   });
 
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     if (course && modalType !== "add") {
-  //       reset({
-  //         ...course,
-  //         contents:
-  //           Array.isArray(course.contents) && course.contents.length > 0
-  //             ? course.contents.map((c) => ({
-  //                 name: c.name,
-  //                 lecturesNumber: c.lecturesNumber,
-  //                 time: c.time,
-  //               }))
-  //             : [],
-  //       });
-  //       setSelectedImage(
-  //         course.imageUrl?.startsWith("data:")
-  //           ? course.imageUrl
-  //           : `http://localhost:5046${course.imageUrl}`
-  //       );
-  //       setRate(course.rate || 0);
-  //     } else {
-  //       reset({
-  //         name: "",
-  //         imageUrl: "",
-  //         categoryId: "",
-  //         level: "",
-  //         instructorId: "",
-  //         cost: 0,
-  //         totalHours: 0,
-  //         rate: 0,
-  //         description: "",
-  //         certification: "",
-  //         contents: [],
-  //       });
-  //       setSelectedImage(null);
-  //       setRate(0);
-  //     }
-  //   }
-  // }, [isOpen, course, modalType, reset]);
-
   useEffect(() => {
     const fetchInstructors = async () => {
       const res = await getInstructors();
@@ -265,7 +225,7 @@ export default function CourseModal({
                     className="object-cover rounded-lg"
                   />
                 ) : (
-                  <div>
+                  <div className="flex flex-col items-center ">
                     <Upload className="w-5 h-5 text-content-secondery" />
                     <span className="text-sm font-medium text-content-secondery">
                       Upload Image
@@ -597,7 +557,7 @@ export default function CourseModal({
                 onClick={addContent}
                 className="flex items-center w-full justify-center bg-[#ECEEF0] py-3 px-3.5 rounded-lg mt-2 text-sm text-content-primary font-semibold hover:bg-gray-200"
               >
-                Add Another Content <PlusCircle className="ml-2 w-4 h-4" />
+                Add Content <PlusCircle className="ml-2 w-4 h-4" />
               </button>
             )}
           </>

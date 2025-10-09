@@ -16,6 +16,8 @@ import Pagination from "../../Components/Pagination";
 import { getCategories } from "../../api/categoryApi";
 import toast from "react-hot-toast";
 import AdminSearchBar from "../../Components/AdminComponents/AdminSearchBar";
+import FilterMenu from "../../Components/FilterMenu";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
@@ -26,6 +28,8 @@ export default function Courses() {
   const [totalPages, setTotalPages] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [selectedRating, setSelectedRating] = useState(null);
+  const [price, setPrice] = useState(1500);
 
   const [modalType, setModalType] = useState(null);
   const [selected, setSelected] = useState(null);
@@ -51,6 +55,9 @@ export default function Courses() {
       const res = await getSearchCourses({
         name: search,
         categoryName: category || null,
+        rating: selectedRating,
+        minPrice: 0,
+        maxPrice: price,
         page,
         limit: 9,
       });
@@ -67,7 +74,7 @@ export default function Courses() {
 
   useEffect(() => {
     getCourses();
-  }, [search, category, page]);
+  }, [search, category, page, selectedRating, price]);
 
   // Save Course (Add / Update)
   const handleSaveCourse = async (payload, type, id) => {
@@ -200,40 +207,46 @@ export default function Courses() {
               </div>
 
               {/* Filter */}
-              <div className="p-2.5 border border-foundation-border shadow-md rounded-lg flex justify-center items-center">
-                <button className="text-shadow-content-tertiary hover:text-gray-600">
-                  <ListFilter className="w-5 h-5" />
-                </button>
-              </div>
+              <FilterMenu
+                selectedRating={selectedRating}
+                setSelectedRating={setSelectedRating}
+                price={price}
+                setPrice={setPrice}
+              />
             </div>
           </div>
 
           {/* Loader */}
           {loading && (
             <div className="flex justify-center my-20">
-              <p>Loading...</p>
+              <ClipLoader color="#3b82f6" />
             </div>
           )}
 
           {/* Courses Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {courses.map((course) => (
-              <AdminCourseCard
-                key={course.id}
-                course={course}
-                onView={() => {
-                  setModalType("view");
-                  setSelected(course);
-                }}
-                onEdit={() => {
-                  setModalType("update");
-                  setSelected(course);
-                }}
-                onDelete={() => setDeleteItem(course)}
-              />
-            ))}
-          </div>
-
+          {courses.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {courses.map((course) => (
+                <AdminCourseCard
+                  key={course.id}
+                  course={course}
+                  onView={() => {
+                    setModalType("view");
+                    setSelected(course);
+                  }}
+                  onEdit={() => {
+                    setModalType("update");
+                    setSelected(course);
+                  }}
+                  onDelete={() => setDeleteItem(course)}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="flex justify-center my-20">
+              <p>No Courses Found</p>
+            </div>
+          )}
           {/* Pagination */}
           {courses.length > 0 && (
             <div className="flex justify-center mt-10">

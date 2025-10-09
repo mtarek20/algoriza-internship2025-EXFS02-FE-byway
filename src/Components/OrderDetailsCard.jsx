@@ -26,7 +26,7 @@ export default function OrderDetailsCard({ price, discount, tax }) {
         {/* Total */}
         <div className="flex justify-between">
           <p className="text-xl font-semibold text-g-900">Total</p>
-          <h4 className="text-xl font-semibold text-g-900">${total}</h4>
+          <h4 className="text-xl font-semibold text-g-900">${total || 0} </h4>
         </div>
       </div>
     </div>

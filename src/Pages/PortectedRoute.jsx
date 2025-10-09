@@ -1,20 +1,22 @@
 import { useAtom } from "jotai";
-import { Navigate } from "react-router-dom";
-import { tokenAtom, userAtom } from "../Store/authAtom";
+import { Navigate, useLocation } from "react-router-dom";
+import { tokenAtom } from "../Store/authAtom";
 
-export default function ProtectedRoute({ children, role }) {
-  const [user] = useAtom(userAtom);
+export default function ProtectedRoute({ children, allowedRoles }) {
   const [token] = useAtom(tokenAtom);
+  const location = useLocation();
 
-  if (!user && !token) {
-    return <Navigate to="/" replace />;
+  const storedRole = localStorage.getItem("role");
+
+  if (!token || !storedRole) {
+    return <Navigate to="/signin" state={{ from: location }} replace />;
   }
 
-  if (localStorage.getItem("token") === null) {
-    return <Navigate to="/" replace />;
+  if (allowedRoles && !allowedRoles.includes(storedRole)) {
+    return <Navigate to="/unauthorized" replace />;
   }
 
-  if (role && localStorage.getItem("role") !== role) {
+  if (storedRole === "User" && location.pathname.startsWith("/admin")) {
     return <Navigate to="/" replace />;
   }
 

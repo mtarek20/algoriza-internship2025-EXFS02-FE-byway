@@ -1,9 +1,7 @@
-import { useAtom } from "jotai";
 import ArrowRight from "../../../assets/icons/chevron-right.svg";
 import ArrowLeft from "../../../assets/icons/left-chevron.svg";
 import InstructorCard from "../../InstructorCard";
-import { instructorsAtom } from "../../../Store/instructorsAtom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getInstructors } from "../../../api/instructorApi";
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,13 +10,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default function TopInstructorSection() {
-  const [instructors, setInstructors] = useAtom(instructorsAtom);
+  const [instructors, setInstructors] = useState([]);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
   useEffect(() => {
     const loadTopInstructors = async () => {
       const res = await getInstructors();
+      console.log(res);
       setInstructors(res);
     };
 

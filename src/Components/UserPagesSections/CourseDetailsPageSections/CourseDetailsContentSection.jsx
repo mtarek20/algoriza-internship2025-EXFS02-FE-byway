@@ -1,7 +1,7 @@
-export default function CourseDetailsContentSection({ course }) {
+export default function CourseDetailsContentSection({ course, contentRef }) {
   const courses = course.contents;
   return (
-    <div className="">
+    <div className="" ref={contentRef}>
       <h3 className="text-xl font-semibold text-g-900 mb-4">Content</h3>
       <div className="border border-graylight rounded-lg overflow-hidden bg-white">
         {courses.map((course, index) => (

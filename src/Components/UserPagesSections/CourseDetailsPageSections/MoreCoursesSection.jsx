@@ -3,6 +3,7 @@ import CourseCard from "../../CourseCard";
 import { useParams } from "react-router-dom";
 import { useAtom } from "jotai";
 import { coursesAtom } from "../../../Store/courseAtom";
+import { Link } from "react-router-dom";
 
 export default function MoreCoursesSection() {
   const { id } = useParams();
@@ -23,7 +24,9 @@ export default function MoreCoursesSection() {
 
       <div className="grid grid-cols-4 gap-7  ">
         {similarCourses.map((course) => (
-          <CourseCard key={course.id} data={course} />
+          <Link to={`/courses/${course.id}`}>
+            <CourseCard key={course.id} data={course} />
+          </Link>
         ))}
       </div>
     </div>

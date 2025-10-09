@@ -15,8 +15,7 @@ export default function CoursesSidebar({ filters, setFilters }) {
   const handleRatingChange = (rating) => {
     setFilters((prev) => ({
       ...prev,
-      minRating: rating,
-      maxRating: 5,
+      rating: rating,
     }));
   };
 

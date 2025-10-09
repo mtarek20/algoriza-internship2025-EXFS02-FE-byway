@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import AboutUsSection from "../../Components/UserPagesSections/HomePageSections/AboutUsSection";
 import BecameInstructorSection from "../../Components/UserPagesSections/HomePageSections/BecameInstructorSection";
 import StatsCounterSection from "../../Components/UserPagesSections/HomePageSections/CounterSection";
@@ -7,6 +8,11 @@ import TopCoursesSection from "../../Components/UserPagesSections/HomePageSectio
 import TopInstructorSection from "../../Components/UserPagesSections/HomePageSections/TopInstructorSection";
 
 export default function HomePage() {
+  const role = localStorage.getItem("role");
+
+  if (role === "Admin") {
+    return <Navigate to="/admin/dashboard" replace />;
+  }
   return (
     <div className="space-y-15 ">
       <HeroSection />

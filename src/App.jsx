@@ -17,22 +17,33 @@ import Instructors from "./Pages/Admin/Instructors";
 import Courses from "./Pages/Admin/Courses";
 import ProtectedRoute from "./Pages/PortectedRoute";
 import { Toaster } from "react-hot-toast";
+import Unauthorized from "./Pages/Common/UnAuthoized";
+import StayLogged from "./Services/StayLoged";
 
 function App() {
   const router = createBrowserRouter([
+    // User Layout Routes
     {
-      // User Routes
-      path: "",
-      element: <UserLayout />,
+      path: "/",
+      element: (
+        <StayLogged>
+          <UserLayout />
+        </StayLogged>
+      ),
       children: [
-        { index: true, element: <HomePage /> },
-        { path: "courses", element: <CoursesPage /> },
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "courses",
+          element: <CoursesPage />,
+        },
         { path: "/courses/:id", element: <CourseDetails /> },
-
         {
           path: "shopping-cart",
           element: (
-            <ProtectedRoute role="User">
+            <ProtectedRoute allowedRoles={["User"]}>
               <ShoppingCartPage />
             </ProtectedRoute>
           ),
@@ -40,7 +51,7 @@ function App() {
         {
           path: "checkout",
           element: (
-            <ProtectedRoute role="User">
+            <ProtectedRoute allowedRoles={["User"]}>
               <CheckOutPage />
             </ProtectedRoute>
           ),
@@ -48,7 +59,7 @@ function App() {
         {
           path: "purchase-complete",
           element: (
-            <ProtectedRoute role="User">
+            <ProtectedRoute allowedRoles={["User"]}>
               <PurchaseCompletePage />
             </ProtectedRoute>
           ),
@@ -57,31 +68,35 @@ function App() {
       ],
     },
 
-    // Admin Routes
+    // Admin Layout Routes
     {
-      path: "",
-      element: <AdminLayout />,
+      path: "/admin",
+      element: (
+        <StayLogged>
+          <AdminLayout />
+        </StayLogged>
+      ),
       children: [
         {
-          path: "admin/dashboard",
+          path: "dashboard",
           element: (
-            <ProtectedRoute role="Admin">
+            <ProtectedRoute allowedRoles={["Admin"]}>
               <AdminDashboard />
             </ProtectedRoute>
           ),
         },
         {
-          path: "admin/instructors",
+          path: "instructors",
           element: (
-            <ProtectedRoute role="Admin">
+            <ProtectedRoute allowedRoles={["Admin"]}>
               <Instructors />
             </ProtectedRoute>
           ),
         },
         {
-          path: "admin/courses",
+          path: "courses",
           element: (
-            <ProtectedRoute role="Admin">
+            <ProtectedRoute allowedRoles={["Admin"]}>
               <Courses />
             </ProtectedRoute>
           ),
@@ -89,6 +104,7 @@ function App() {
       ],
     },
 
+    // Auth Route
     {
       path: "",
       element: <AuthLayout />,
@@ -97,7 +113,10 @@ function App() {
         { path: "signin", element: <LogIn /> },
       ],
     },
+
+    { path: "unauthorized", element: <Unauthorized /> },
   ]);
+
   return (
     <>
       <RouterProvider router={router} />

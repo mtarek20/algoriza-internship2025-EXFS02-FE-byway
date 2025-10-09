@@ -45,8 +45,6 @@ export default function CourseDetails() {
 
       <CourseDetailsInfoSection />
 
-      <CourseDetailsReviewsSection />
-
       <MoreCoursesSection />
     </div>
   );
