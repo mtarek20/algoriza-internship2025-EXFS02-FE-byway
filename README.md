@@ -14,7 +14,7 @@ The system connects to a Backend (ASP.NET Core Web API) that handles all data ma
 -
 
 ## 🚀 Live Demo
-🔗 [Byway Frontend on Netlify](https://byway-project.netlify.app/)
+🔗 [Byway Frontend on Netlify](https://byway-project-fe.netlify.app/)
 
 ---
 
